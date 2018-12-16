@@ -1,5 +1,5 @@
 // JavaScript Document
-/*global store isAdding*/
+/*global store listMaker*/
 
 const store = (function(){
 	

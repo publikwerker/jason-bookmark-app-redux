@@ -1,13 +1,11 @@
 // JavaScript Document
-/*global store isAdding*/
+/*global store listMaker*/
 
 $(document).ready(function () {
 	store;
+	listMaker;
 	console.log('index.js ran');
-	for (let i=0; i<store.bookmarks.length; i++) {
-		console.log('bookmarks contains: ' + store.bookmarks[i]);
-	};
 	console.log('isAdding has the value of ' + store.isAdding);
-	
+	console.log('bookmarks are:' + listMaker.oneBookmarkString);
 	
 })
