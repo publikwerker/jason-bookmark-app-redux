@@ -1,6 +1,6 @@
 // JavaScript Document
-/*global store listMaker*/
-
+/*global store listMaker $ mainRender*/
+'use strict';
 
 
 const listMaker = (function() {
