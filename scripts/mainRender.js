@@ -12,19 +12,19 @@ const mainRender = (function() {
 				`
 			<fieldset class="add-field">
                 <label for="link title" class="adding-label">Title of this bookmark</label><br />
-                    <input type="text" name="link title" id="title" placeholder="memorable title" /><br />
-                <label for="link description" class="adding-label">Brief description of the site</label><br />
-                    <textarea  name="link description" id="description" placeholder="This site had a complete how-to build a fort." /><br />
-                <label for="link url" class="adding-label">the url</label><br />
-                    <input type="url" name="link url" id="url" placeholder="http://...." /><br/>
+                    <input type="text" name="linkTitle" id="title" placeholder="memorable title" /><br />
+                <label for="linkDescription" class="adding-label">Brief description of the site</label><br />
+                    <textarea  name="linkDescription" id="description" placeholder="This site had a complete how-to build a fort." /><br />
+                <label for="linkUrl" class="adding-label">the url</label><br />
+                    <input type="url" name="linkUrl" id="url" placeholder="http://...." /><br/>
                 <label for="filter-results" class="adding-label">Rate its goodness</label> <br />
-                    <select id="filter-results">
-                        <option value = "0">none</option>
-                        <option value = "1">one</option>
-                        <option value = "2">two</option>
-                        <option value = "3">three</option>
-                        <option value = "4">four</option>
-                        <option value = "5">five</option>
+                    <select id="filter-results" name="filterResults">
+                        <option value="0">none</option>
+                        <option value="1">one</option>
+                        <option value="2">two</option>
+                        <option value="3">three</option>
+                        <option value="4">four</option>
+                        <option value="5">five</option>
                     </select><br />
 				<button type="submit" id="form-submit">submit</button>
             </fieldset>

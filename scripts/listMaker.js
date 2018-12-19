@@ -23,6 +23,40 @@ const listMaker = (function() {
 		return stringReady;
 	}());
 	
+		
+	//changes isAdding value to true
+	function changeIsAddingToTrue() {
+		store.isAdding = true;
+		console.log('isAdding has the value of ' + store.isAdding);
+	}
+	
+	//changes isAdding value to false
+	function changeIsAddingToFalse() {
+		store.isAdding = false;
+		console.log('isAdding has the value of ' + store.isAdding);
+	}
+	
+	//listens for add button click
+	$('#add-button').on('click', function() {
+		console.log('add button clicked');
+		changeIsAddingToTrue();
+		mainRender.render();
+	});
+	
+	//listens for add submit
+	$('form').on('submit', event => {
+		event.preventDefault();
+		console.log('submit button pushed');
+		// capture form data
+		const formData = $('form').serializeArray();
+		console.log(formData);
+		// change value of isAdding
+		changeIsAddingToFalse();
+		// removes add field
+		$('.js-add-bookmark').html('');
+		mainRender.render();
+	});
+
 	
 	return {
 		oneBookmarkString,
