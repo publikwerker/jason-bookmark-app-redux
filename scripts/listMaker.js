@@ -43,20 +43,27 @@ const listMaker = (function() {
 		mainRender.render();
 	});
 	
+	//capture form data
+	const newAddData = (function(input) {
+		console.log(input);
+	});
+	
+	
 	//listens for add submit
+
 	$('form').on('submit', event => {
 		event.preventDefault();
 		console.log('submit button pushed');
 		// capture form data
 		const formData = $('form').serializeArray();
-		console.log(formData);
+		newAddData(formData);
 		// change value of isAdding
 		changeIsAddingToFalse();
 		// removes add field
 		$('.js-add-bookmark').html('');
 		mainRender.render();
 	});
-
+	
 	
 	return {
 		oneBookmarkString,

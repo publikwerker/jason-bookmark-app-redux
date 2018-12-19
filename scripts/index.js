@@ -8,5 +8,4 @@ $(document).ready(function () {
 	console.log('isAdding has the value of ' + store.isAdding);
 	console.log('bookmarks are:' + listMaker.oneBookmarkString);
 	
-
 })
