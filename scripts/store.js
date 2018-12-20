@@ -6,27 +6,27 @@ const store = (function(){
 	
 	const bookmarks = [
 		{
-			id: 'id',
-			title: 'title',
-			url: 'url',
-			desc: 'desc',
-			rating: 'rating',
+			id: '439275908',
+			title: 'publikwerks',
+			url: 'http://www.publikwerks.com',
+			desc: 'best art in the world',
+			rating: 'four',
 			isExpanded: false
 		},
 				{
-			id: 'id',
-			title: 'title',
-			url: 'url',
+			id: '526247',
+			title: 'volkslandia',
+			url: 'http://www.volkslandia.com',
 			desc: 'desc',
-			rating: 'rating',
+			rating: '2',
 			isExpanded: false
 		},
 		{
-			id: 'id',
-			title: 'title',
-			url: 'url',
-			desc: 'desc',
-			rating: 'rating',
+			id: '63754',
+			title: 'tarot',
+			url: 'http://www.thedarkside.com',
+			desc: 'automated tarot reading',
+			rating: '5',
 			isExpanded: true
 		}
 	];
