@@ -18,7 +18,7 @@ const store = (function(){
 			title: 'volkslandia',
 			url: 'http://www.volkslandia.com',
 			desc: 'desc',
-			rating: '2',
+			rating: 'two',
 			isExpanded: false
 		},
 		{
@@ -26,7 +26,7 @@ const store = (function(){
 			title: 'tarot',
 			url: 'http://www.thedarkside.com',
 			desc: 'automated tarot reading',
-			rating: '5',
+			rating: 'five',
 			isExpanded: true
 		}
 	];

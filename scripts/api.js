@@ -8,12 +8,37 @@ const api = (function(callback) {
 
     const getBookmarks = (function(callback) {
         console.log('getBookmarks ran');
-        $.getJSON(BASE_URL, (callback));
+        const bookmarks = $.getJSON(BASE_URL, (callback));
+        mainRender.addBookmark(bookmarks);
+        //return bookmarks;
+    });
+
+    const createBookmarks = (function(bookmarkToBe, callback) {
+        console.log('createBookmarks ran');
+        const newBookmark = JSON.stringify(bookmarkToBe);
+
+        $.ajax({
+            url: BASE_URL,
+            method: 'POST',
+            contentType: 'application/json',
+            data: newBookmark,
+            success: callback,
+        });
+    });
+
+    const deleteItem = (function(id, callback) {
+        $.ajax({
+            url:BASE_URL+id,
+            method: 'DELETE',
+            success: callback
+        });
+
+
     });
 	
     return {
         getBookmarks,
-        //createBookmarks,
-        //deleteItem,
+        createBookmarks,
+        deleteItem,
     };
 }());
