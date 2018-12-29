@@ -3,10 +3,8 @@
 'use strict';
 
 $(document).ready(function () {
-	
-    api.getBookmarks(() => {
+	api.getBookmarks(() => {
 		mainRender.render();
 	});
-
-	
+   listMaker.bindEventListeners();
 });

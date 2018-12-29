@@ -9,19 +9,21 @@ const api = (function(callback) {
     const getBookmarks = (function(callback) {
         console.log('getBookmarks ran');
         const bookmarks = $.getJSON(BASE_URL, (callback));
+        console.log('getBookmarks: ' + bookmarks.data);
         mainRender.addBookmark(bookmarks);
-        //return bookmarks;
+		mainRender.render();
     });
 
-    const createBookmarks = (function(bookmarkToBe, callback) {
+    const createBookmarks = (function(theBody, callback) {
         console.log('createBookmarks ran');
-        const newBookmark = JSON.stringify(bookmarkToBe);
+        //const newBookmark = JSON.stringify(theBody);
+		//console.log(newBookmark);
 
         $.ajax({
             url: BASE_URL,
             method: 'POST',
             contentType: 'application/json',
-            data: newBookmark,
+            data: theBody,
             success: callback,
         });
     });

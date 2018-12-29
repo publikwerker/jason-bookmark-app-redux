@@ -35,9 +35,9 @@ const mainRender = (function() {
 		// insert condensed bookmark
 		return`
             <div class="bookmark" id="${bookmark.id}">
-                <div class="bookmark-title">
+                
                     <h2 class="bookmark-name">${bookmark.title}</h2>
-                </div>
+                
                 <a class="bookmark-link" href="${bookmark.url}">Link</a>
                 <span class="rating">${bookmark.rating} stars</span>
             </div>
@@ -48,9 +48,9 @@ const mainRender = (function() {
 	function insertExpandedView(bookmark) {
 		// insert expanded bookmark
 		return` <div class="bookmark" id="${bookmark.id}">
-                <div class="bookmark-title">
+              
                     <h2 class="bookmark-name">${bookmark.title}</h2>
-                </div>
+             
                 <a class="bookmark-link" href="${bookmark.url}">Link</a>
                 <div class="bookmark-description">
                     <p class="description">${bookmark.desc}</p>
@@ -64,22 +64,21 @@ const mainRender = (function() {
     function generateBookmarkString() {
         console.log('generateBookmarkString ran');
         const bookmarks = store.bookmarks.map((bookmark) => {
-			console.log(bookmark.isExpanded);
 			if (bookmark.isExpanded===true) {
-				console.log(insertExpandedView(bookmark));
 				return insertExpandedView(bookmark);
 			} else {
 				return insertCondensedView(bookmark);
 			}
 		});
 		
-        console.log(bookmarks);
         return bookmarks.join('');
     };
 	
 	
-    const addBookmark = function(bookmark) {
-        store.bookmarks.push(bookmark);
+    const addBookmark = function(theBookmarks) {
+		for (let i=0; i < theBookmarks; i++) {
+			store.bookmarks.push(theBookmarks[i]);
+		};
     };
 	
 	//if (store.isAdding == true) 
@@ -87,7 +86,7 @@ const mainRender = (function() {
 		
 		if (store.isAdding) {
 			//clear bookmark list
-			$('js-bookmark-list').html('');
+			$('.js-bookmark-list').html('');
 			insertAddingBlock();
 		} else {
 			// clear form for adding bookmarks
@@ -96,6 +95,7 @@ const mainRender = (function() {
 			$('.js-bookmark-list').html(bookmarkDisplay);
 		}
 	});
+	
 	
 	return {
 		render,
