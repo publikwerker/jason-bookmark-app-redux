@@ -8,10 +8,7 @@ const api = (function(callback) {
 
     const getBookmarks = (function(callback) {
         console.log('getBookmarks ran');
-        const bookmarks = $.getJSON(BASE_URL, (callback));
-        console.log('getBookmarks: ' + bookmarks.data);
-        mainRender.addBookmark(bookmarks);
-		mainRender.render();
+        $.getJSON(BASE_URL, (callback));
     });
 
     const createBookmarks = (function(theBody, callback) {
