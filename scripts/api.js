@@ -8,7 +8,17 @@ const api = (function(callback) {
 
     const getBookmarks = (function(callback) {
         console.log('getBookmarks ran');
-        $.getJSON(BASE_URL, (callback));
+        $.ajax({
+			method: 'GET',
+			datatype: "json",
+			url: BASE_URL,
+			data: {part: "snippet"},
+			success: (bookmarks) => {
+			// each bookmark gets added to store
+				bookmarks.forEach((bookmark) => store.bookmarks.push(bookmark));
+				mainRender.render();
+			}
+		});
     });
 
     const createBookmarks = (function(theBody, callback) {
@@ -24,6 +34,10 @@ const api = (function(callback) {
             success: callback,
         });
     });
+	
+//		const updateBookmarks = (function (theNewDate, id) {
+//			
+//		})
 
     const deleteItem = (function(id, callback) {
         $.ajax({

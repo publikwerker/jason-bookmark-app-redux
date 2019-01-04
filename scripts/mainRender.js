@@ -70,20 +70,11 @@ const mainRender = (function() {
 				return insertCondensedView(bookmark);
 			}
 		});
-		
         return bookmarks.join('');
     };
 	
-	
-    const addBookmark = function(theBookmarks) {
-		for (let i=0; i < theBookmarks; i++) {
-			store.bookmarks.push(theBookmarks[i]);
-		};
-    };
-	
 	//if (store.isAdding == true) 
-	const render = (function() {	
-		
+	const render = (function() {
 		if (store.isAdding) {
 			//clear bookmark list
 			$('.js-bookmark-list').html('');
@@ -98,7 +89,7 @@ const mainRender = (function() {
 	
 	
 	return {
+		insertExpandedView,
 		render,
-		addBookmark,
 	};
 	}());

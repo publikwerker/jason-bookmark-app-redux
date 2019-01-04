@@ -5,18 +5,11 @@
 
 const listMaker = (function() {
 	
-	
-	
-	//converts bookmarks into a string
-	const oneBookmarkString = (function(){
-		
-		console.log('converting bookmark objects into string');
-		const theBookmarks = store.bookmarks;
-		const stringReady = JSON.stringify(theBookmarks);
-		
-		return stringReady;
-	}());
-	
+	const setStore =(function () {
+		console.log('setStore ran');
+		// make GET request for info on the server
+		api.getBookmarks();
+	});
 		
 	//changes isAdding value to true
 	function changeIsAddingToTrue() {
@@ -58,7 +51,7 @@ const listMaker = (function() {
 			"isExpanded": false
 		}`;
 		console.log(theBody);
-		api.createBookmarks(theBody);
+		api.createBookmarks(theBody);		
 	});
 	
 	
@@ -69,22 +62,33 @@ const listMaker = (function() {
 			console.log('submit button pushed');
 			// capture form data
 			const formData = $('form').serializeArray();
+			// add info to server
 			newAddData(formData);
 			// change value of isAdding
 			changeIsAddingToFalse();
 			// removes add field
 			$('.js-add-bookmark').html('');
-			api.getBookmarks(() => {
-				mainRender.render();
-			});
+			mainRender.render();
 		});
 	};
+	
+	function switchElementToExpanded(object) {
+		
+		document.getElementById(object.id).outerHTML = mainRender.insertExpandedView(object);
+	}
 	
 	const handleBookmarkClick = function() {
 		$('.js-bookmark-list').click('.bookmark-name', function(e) {
 			//get id number
 			const targetObject = $(e.target).closest('div');
 			const theId = (targetObject[0].id);
+			const alterThis = store.bookmarks.filter((bookmark) => bookmark.id === theId);
+			alterThis.isExpanded = true;
+			console.log(alterThis);
+			// mute this to render only one element
+			//mainRender.render();
+			//and instead call switchElementToExpanded
+			switchElementToExpanded(alterThis[0]);
 			console.log(theId);
 		});
 	};
@@ -97,7 +101,8 @@ const listMaker = (function() {
 	
 	
 	return {
-		oneBookmarkString,
+		setStore,
+		//oneBookmarkString,
 		bindEventListeners
 	};
 	

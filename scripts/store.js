@@ -33,7 +33,9 @@ const store = (function(){
 	// const isAdding = false;
 	
 	const addItem = function(item) {
-		this.bookmarks.push(item);
+		//item.isExpanded = false;
+		console.log(this);
+		store.bookmarks.push(item);
 	}
 	
 	return {
