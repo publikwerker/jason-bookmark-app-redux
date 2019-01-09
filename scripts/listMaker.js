@@ -5,6 +5,7 @@
 
 const listMaker = (function() {
 	
+
 	const setStore =(function () {
 		console.log('setStore ran');
 		// make GET request for info on the server
@@ -72,23 +73,40 @@ const listMaker = (function() {
 		});
 	};
 	
-	function switchElementToExpanded(object) {
-		
+	function switchElementToExpanded(object) {	
 		document.getElementById(object.id).outerHTML = mainRender.insertExpandedView(object);
+	}
+
+	function switchElementToCondensed(object) {	
+		document.getElementById(object.id).outerHTML = mainRender.insertCondensedView(object);
 	}
 	
 	const handleBookmarkClick = function() {
 		$('.js-bookmark-list').click('.bookmark-name', function(e) {
 			//get id number
 			const targetObject = $(e.target).closest('div');
+			//assign it to a variable
 			const theId = (targetObject[0].id);
-			const alterThis = store.bookmarks.filter((bookmark) => bookmark.id === theId);
-			alterThis.isExpanded = true;
-			console.log(alterThis);
-			// mute this to render only one element
-			//mainRender.render();
-			//and instead call switchElementToExpanded
-			switchElementToExpanded(alterThis[0]);
+			//select bookmark with that id from store
+			const bookmarkClicked = store.bookmarks.filter((bookmark) => bookmark.id === theId);
+			console.log("the value of bookmarkClicked[0].isExpanded is " + bookmarkClicked[0].isExpanded);
+			//ascertain value of isExpanded key within bookmark object
+			//and reverse it
+			bookmarkClicked[0].isExpanded = !bookmarkClicked[0].isExpanded;
+			//assign that value to a variable
+			const tempIsExpanded = bookmarkClicked[0].isExpanded;
+			//check new value of isExpanded, 
+			//render accordingly
+			if (tempIsExpanded === true) {
+				console.log("this works");
+				switchElementToExpanded(bookmarkClicked[0]);
+			} else if (tempIsExpanded === false) {
+				console.log("this works");
+				switchElementToCondensed(bookmarkClicked[0]);
+			};
+
+			console.log("the value of tempIsExpanded is " + tempIsExpanded);
+		
 			console.log(theId);
 		});
 	};
@@ -102,7 +120,6 @@ const listMaker = (function() {
 	
 	return {
 		setStore,
-		//oneBookmarkString,
 		bindEventListeners
 	};
 	

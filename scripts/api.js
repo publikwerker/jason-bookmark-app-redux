@@ -15,8 +15,16 @@ const api = (function(callback) {
 			data: {part: "snippet"},
 			success: (bookmarks) => {
 			// each bookmark gets added to store
-				bookmarks.forEach((bookmark) => store.bookmarks.push(bookmark));
-				mainRender.render();
+				bookmarks.forEach((bookmark) => {
+                    bookmark.isExpanded=false;
+                    store.bookmarks.push(bookmark);
+                });
+                bookmarks.forEach((bookmark) => {
+                    console.log(bookmark)
+                });
+                mainRender.render();
+                
+
 			}
 		});
     });

@@ -90,6 +90,7 @@ const mainRender = (function() {
 	
 	return {
 		insertExpandedView,
+		insertCondensedView,
 		render,
 	};
 	}());
