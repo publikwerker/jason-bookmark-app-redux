@@ -23,8 +23,6 @@ const api = (function(callback) {
                     console.log(bookmark)
                 });
                 mainRender.render();
-                
-
 			}
 		});
     });
@@ -39,7 +37,10 @@ const api = (function(callback) {
             method: 'POST',
             contentType: 'application/json',
             data: theBody,
-            success: callback,
+            success: (function() {
+                listMaker.setStore();
+                mainRender.render();
+            }),
         });
     });
 	

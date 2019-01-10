@@ -8,6 +8,8 @@ const listMaker = (function() {
 
 	const setStore =(function () {
 		console.log('setStore ran');
+		// clear old store
+		store.bookmarks = [];
 		// make GET request for info on the server
 		api.getBookmarks();
 	});
@@ -69,6 +71,7 @@ const listMaker = (function() {
 			changeIsAddingToFalse();
 			// removes add field
 			$('.js-add-bookmark').html('');
+			setStore();
 			mainRender.render();
 		});
 	};
