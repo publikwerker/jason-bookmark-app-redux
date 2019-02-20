@@ -88,8 +88,10 @@ const listMaker = (function() {
 		$('.js-bookmark-list').click('.bookmark-name', function(e) {
 			//get id number
 			const targetObject = $(e.target).closest('div');
+			console.log(`e.target is ${e.target}`);
 			//assign it to a variable
 			const theId = (targetObject[0].id);
+			console.log(`theID is ${theId}`)
 			//select bookmark with that id from store
 			const bookmarkClicked = store.bookmarks.filter((bookmark) => bookmark.id === theId);
 			console.log("the value of bookmarkClicked[0].isExpanded is " + bookmarkClicked[0].isExpanded);
@@ -116,7 +118,7 @@ const listMaker = (function() {
 
 	const handleDeleteButtonClick = function() {
 		$('.js-bookmark-list').click('delete-link', function(e) {
-			const targetObject = $(e.target).closet('div');
+			const targetObject = $(e.target).closest('div');
 			const bookmarkToDelete = targetObject[0].id;
 		})
 	}
