@@ -43,10 +43,6 @@ const api = (function(callback) {
             }),
         });
     });
-	
-//		const updateBookmarks = (function (theNewDate, id) {
-//			
-//		})
 
     const deleteItem = (function(id, callback) {
         $.ajax({
@@ -54,8 +50,6 @@ const api = (function(callback) {
             method: 'DELETE',
             success: callback
         });
-
-
     });
 	
     return {
@@ -63,4 +57,5 @@ const api = (function(callback) {
         createBookmarks,
         deleteItem,
     };
+    
 }());

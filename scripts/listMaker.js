@@ -15,8 +15,8 @@ const listMaker = (function() {
 	});
 		
 	//changes isAdding value to true
-	function changeIsAddingToTrue() {
-		store.isAdding = true;
+	function toggleIsAdding() {
+		store.isAdding = !store.isAdding;
 		console.log('isAdding has the value of ' + store.isAdding);
 	}
 	
@@ -30,7 +30,7 @@ const listMaker = (function() {
 	const handleAddButtonClick = function () {
 	$('#add-button').on('click', function() {
 		console.log('add button clicked');
-		changeIsAddingToTrue();
+		toggleIsAdding();
 		mainRender.render();
 	})};
 	
@@ -109,15 +109,23 @@ const listMaker = (function() {
 			};
 
 			console.log("the value of tempIsExpanded is " + tempIsExpanded);
-		
 			console.log(theId);
 		});
 	};
+
+
+	const handleDeleteButtonClick = function() {
+		$('.js-bookmark-list').click('delete-link', function(e) {
+			const targetObject = $(e.target).closet('div');
+			const bookmarkToDelete = targetObject[0].id;
+		})
+	}
 	
 	const bindEventListeners = function(){
 		handleAddButtonClick();
 		handleFormSubmit();
 		handleBookmarkClick();
+		handleDeleteButtonClick();
 	};
 	
 	
