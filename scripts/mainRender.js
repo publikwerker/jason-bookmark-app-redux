@@ -48,16 +48,14 @@ const mainRender = (function() {
 	function insertExpandedView(bookmark) {
 		// insert expanded bookmark
 		return` <div class="bookmark" id="${bookmark.id}">
-              
                     <h2 class="bookmark-name">${bookmark.title}</h2>
-             
-                <a class="bookmark-link" href="${bookmark.url}">Link</a>
-                <div class="bookmark-description">
-                    <p class="description">${bookmark.desc}</p>
-                </div>
-                <span class="rating">${bookmark.rating} stars</span>
-                <button name="delete-link">delete</button>
-            </div>`;
+                	<a class="bookmark-link" href="${bookmark.url}">Link</a>
+                	<div class="bookmark-description">
+                    	<p class="description">${bookmark.desc}</p>
+                	</div>
+                	<span class="rating">${bookmark.rating} stars</span>
+                	<button class="delete-button id="delete-button">delete</button>
+				</div>`;
 	}
 	
 	 // this creates a string of all the bookmarks

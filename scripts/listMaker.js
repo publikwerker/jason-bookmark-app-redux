@@ -48,9 +48,9 @@ const listMaker = (function() {
 		
 		let theBody = `{
 			"title": "${theTitle}",
-        	"url": "${theURL}",
-        	"desc": "${theDesc}",
-        	"rating": ${theRating},
+      "url": "${theURL}",
+    	"desc": "${theDesc}",
+      "rating": ${theRating},
 			"isExpanded": false
 		}`;
 		console.log(theBody);
@@ -85,11 +85,11 @@ const listMaker = (function() {
 	}
 	
 	const handleBookmarkClick = function() {
-		$('.js-bookmark-list').click('.bookmark-name', function(e) {
-			//get id number
+		$('.js-bookmark-list').on('click', function(e) {
+			//get location of click
 			const targetObject = $(e.target).closest('div');
 			console.log(`e.target is ${e.target}`);
-			//assign it to a variable
+			//assign the id to a variable
 			const theId = (targetObject[0].id);
 			console.log(`theID is ${theId}`)
 			//select bookmark with that id from store
@@ -103,10 +103,8 @@ const listMaker = (function() {
 			//check new value of isExpanded, 
 			//render accordingly
 			if (tempIsExpanded === true) {
-				console.log("this works");
 				switchElementToExpanded(bookmarkClicked[0]);
 			} else if (tempIsExpanded === false) {
-				console.log("this works");
 				switchElementToCondensed(bookmarkClicked[0]);
 			};
 
@@ -117,9 +115,14 @@ const listMaker = (function() {
 
 
 	const handleDeleteButtonClick = function() {
-		$('.js-bookmark-list').click('delete-link', function(e) {
+		$('.js-bookmark-list').on('click', '#delete-button', function(e) {
+			//event.preventDefault();
+			console.log('delete button was clicked');
 			const targetObject = $(e.target).closest('div');
+			console.log(`targetObject is ${e.target}`);
 			const bookmarkToDelete = targetObject[0].id;
+			console.log(`bookmarkToDelete is ${bookmarkToDelete}`);
+			api.deleteItem(bookmarkToDelete);
 		})
 	}
 	

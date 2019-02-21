@@ -2,11 +2,11 @@
 /*global store listMaker main api $*/
 'use strict';
 
-const api = (function(callback) {
+const api = (function() {
     console.log('api ran');
     const BASE_URL = 'https://thinkful-list-api.herokuapp.com/jason/bookmarks/';
 
-    const getBookmarks = (function(callback) {
+    const getBookmarks = (function() {
         console.log('getBookmarks ran');
         $.ajax({
 			method: 'GET',
@@ -27,7 +27,7 @@ const api = (function(callback) {
 		});
     });
 
-    const createBookmarks = (function(theBody, callback) {
+    const createBookmarks = (function(theBody) {
         console.log('createBookmarks ran');
         //const newBookmark = JSON.stringify(theBody);
 		//console.log(newBookmark);
@@ -44,11 +44,14 @@ const api = (function(callback) {
         });
     });
 
-    const deleteItem = (function(id, callback) {
+    const deleteItem = (function(id) {
         $.ajax({
             url:BASE_URL+id,
             method: 'DELETE',
-            success: callback
+            success: (function() {
+                listMaker.setStore();
+                mainRender.render();
+            }),
         });
     });
 	
